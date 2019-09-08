@@ -1,30 +1,25 @@
-let o = [
-    { Po: "a", Qo: "b" },
-    { Po: "aa", Qo: "bb" },
-]
-
-
+const array = require('./../src/array');
 
 module.exports = [
     {
         method: 'GET',
         path: '/home',
-        handler: (req, res) => {
+        handler: (request, h) => {
             return ('Hello World! from Home');
         }
     },
     {
         method: 'GET',
         path: '/o',
-        handler: (req, res) => {
+        handler: (request, h) => {
             return (o);
         }
     },
     {
         method: 'GET',
         path: '/',
-        handler: (req, res) => {
-            return (getDataFromXtable());
+        handler: function (request, h) {
+            return h.array.o;
         }
     }
 ];
