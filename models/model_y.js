@@ -5,7 +5,7 @@ let YtableSchema = new mongoose.Schema({
     q: String,
     s: String
 });
-YtableSchema.indexes({ P: 1, Q: 1 }, { unique: true });
+YtableSchema.indexes({ p: 1, q: 1 }, { unique: true });
 
 let ModelY = mongoose.model("Ytable", YtableSchema);
 

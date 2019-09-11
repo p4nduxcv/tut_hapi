@@ -4,7 +4,7 @@ let ZtableSchema = new mongoose.Schema({
     q: String,
     t: String
 });
-ZtableSchema.indexes({ P: 1, Q: 1 }, { unique: true });
+ZtableSchema.indexes({ p: 1, q: 1 }, { unique: true });
 
 let ModelZ = mongoose.model("Ztable", ZtableSchema);
 
