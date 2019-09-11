@@ -6,7 +6,7 @@ let XtableSchema = new mongoose.Schema({
     r: String
 });
 
-XtableSchema.indexes({ P: 1, Q: 1 }, { unique: true });
+XtableSchema.indexes({ p: 1, q: 1 }, { unique: true });
 
 let ModelX = mongoose.model("Xtable", XtableSchema);
 
