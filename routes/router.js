@@ -6,11 +6,8 @@ const Model_Z = require('../models/model_z');
 
 const o = [
     { P: 'p_test_x', Q: 'q_test_x' },
-    { P: 'test3', Q: 'test4' }
+    { P: 'p_test_y', Q: 'q_test_y' }
 ];
-
-console.log(o[0].P);
-console.log(o[0].Q);
 
 module.exports = [
     {
@@ -43,7 +40,19 @@ module.exports = [
         }
     },
     {
-        method: 'GET', 
+        method: 'GET',
+        path: '/method2',
+        handler: async (request, h) => {
+            try {
+                let model_y = await Model_Y.find({ "p": o[1].P, "q": o[1].Q }).exec();
+                return h.response(model_y);
+            } catch (ex) {
+                return h.response(ex.error).code(500);
+            }
+        }
+    },
+    {
+        method: 'GET',
         path: '/insertX',
         handler: async (request, h) => {
             try {
