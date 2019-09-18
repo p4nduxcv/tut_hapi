@@ -6,8 +6,16 @@ const Model_Z = require('../models/model_z');
 
 const o = [
     { P: 'p_test_x', Q: 'q_test_x' },
-    { P: 'p_test_y', Q: 'q_test_y' }
+    { P: 'p_test_y', Q: 'q_test_y' },
+    { P: 'p_test_z', Q: 'q_test_z' }
 ];
+
+o.forEach(function (element) {
+    X = element.P;
+    Y = element.Q;
+    //console.log("X = " + X + " Y = " + Y);
+    console.log("X = " + X);
+});
 
 module.exports = [
     {
@@ -32,7 +40,15 @@ module.exports = [
         path: '/method1',
         handler: async (request, h) => {
             try {
-                let model_x = await Model_X.find({ "p": o[0].P, "q": o[0].Q }).exec();
+                let model_x = await Model_X.find({
+                    "p": o.forEach(function (element) {
+                        p = element.P;
+                        console.log("P values "+p);
+                    }),
+                    "q": o.forEach(function (element) {
+                        q = element.Q;
+                    }),
+                }).exec();
                 return h.response(model_x);
             } catch (ex) {
                 return h.response(ex.error).code(500);
